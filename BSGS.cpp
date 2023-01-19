@@ -536,6 +536,7 @@ std::string getrandombits(int n){
     return bn;
 }
 Int bit_random(Int min,Int max){
+      Int kmin(&min);
       Int kdf(&max);
       kdf.Sub(&min);
       Int bbobits;
@@ -543,9 +544,9 @@ Int bit_random(Int min,Int max){
     while (bbobits.IsGreaterOrEqual(&kdf)){
         bbobits.SetBase2((char *)getrandombits(kdf.GetBitLength()).c_str());
     }
-      min.Add(&bbobits);
+      kmin.Add(&bbobits);
       //std::string bbits = getrandombits(kdf.GetBitLength());
-    return bbobits;
+    return kmin;
 }
 //std::cout << getrandombits(12);
 void BSGS::Run(int nbThread) {
